@@ -6,3 +6,4 @@
 //! the modem manual yourself!
 pub mod network;
 pub mod sms;
+mod modem;

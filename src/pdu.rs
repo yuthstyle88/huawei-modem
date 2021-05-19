@@ -738,7 +738,7 @@ impl Pdu {
         (ret, tpdu_len)
     }
 }
-pub(crate) struct HexData<'a>(pub &'a [u8]);
+pub struct HexData<'a>(pub &'a [u8]);
 impl<'a> fmt::Display for HexData<'a> {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
        for b in self.0.iter() {

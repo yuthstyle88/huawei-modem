@@ -13,7 +13,7 @@ use std::io::prelude::*;
 fn main() {
     env_logger::init().unwrap();
     let mut core = Core::new().unwrap();
-    let mut modem = HuaweiModem::new_from_path("/dev/ttyUSB2", &core.handle()).unwrap();
+    let mut modem = HuaweiModem::new_from_path("/dev/cu.xrusbmodem144511", &core.handle()).unwrap();
     let urcfut = modem.take_urc_rx().unwrap().for_each(|item| {
         println!("URC: {:?}", item);
         Ok(())
