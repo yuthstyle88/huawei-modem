@@ -107,16 +107,6 @@ pub struct SmsMessage {
     pub pdu: DeliverPdu
 }
 
-pub fn set_init_at(modem: &mut HuaweiModem, mode: NewMessageNotification, mt: NewMessageStorage) -> impl Future<Item = (), Error = HuaweiError> {
-    let text = "AT".to_string();
-    modem.send_raw(AtCommand::Text { text, expected: vec!["OK".into()] })
-        .and_then(|pkt| {
-            let rpl = pkt.extract_named_response("OK")?
-                .get_integer()?;
-            Ok(*rpl)
-        })
-}
-
 /// Controls whether to send new message indications to the TE when new messages arrive. Useful to
 /// avoid polling. (`AT+CNMI`)
 ///
